@@ -1,0 +1,21 @@
+---
+- hosts: localhost:2222
+  remote_user: ansibletest
+  remote_user: ansibletest
+  sudo: yes
+  sudo_user: PurpleLemons
+
+  pre_tasks:
+  - name: Confirm the play is running
+    shell: echo 'playbooktest is running'
+
+  roles:
+    - installnginx
+    - confignginx
+    - setupserver
+    - createfirewall
+    - servefile
+ 
+  post_tasks:
+  - name: Notify the playbook is done
+    shell: echo 'The playbooktest is finished'
