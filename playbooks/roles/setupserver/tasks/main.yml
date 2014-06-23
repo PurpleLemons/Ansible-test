@@ -1,0 +1,22 @@
+tasks:
+  - name: Checks if server is already made
+  
+
+  - name: Check/create the /var/www directory
+
+
+  - name: Create the HTML file in the /var/www directory
+    
+
+  - name: Copy default in /etc/nginx/sites-enabled/servername
+
+
+  - name: Configure the file
+
+
+  - name: Link the file to /etc/nginx/sites-enabled/servername
+
+
+  - name: Restart nginx
+    notify:
+     name: restart nginx
