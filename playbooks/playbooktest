@@ -1,7 +1,6 @@
 ---
 - hosts: localhost:2222
   remote_user: ansibletest
-  remote_user: ansibletest
   sudo: yes
   sudo_user: PurpleLemons
 

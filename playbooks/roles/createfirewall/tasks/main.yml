@@ -1,0 +1,8 @@
+tasks
+  - name: Allow HTTP to connect through IPTables
+
+  - name: Allow SSH to connect through IPTables
+    
+  - name: Restart IPTables
+    notify:
+      name: restart iptables
