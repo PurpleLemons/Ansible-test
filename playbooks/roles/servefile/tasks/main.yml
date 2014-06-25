@@ -1,3 +1,4 @@
+---
 tasks:
   - name: Update the list of stuff
     apt: update_cache=yes

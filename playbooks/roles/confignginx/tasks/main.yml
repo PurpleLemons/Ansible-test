@@ -1,3 +1,4 @@
-tasks:
-  - name: Copy default nginx file
-     
+---
+- tasks:
+    - name: Copy default nginx file
+      command: 
