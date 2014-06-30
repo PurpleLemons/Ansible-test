@@ -1,4 +1,0 @@
----
-- tasks:
-    - name: Copy default nginx file
-      command: 

@@ -1,11 +1,15 @@
 ---
-- tasks:
-  - name: Allow HTTP to connect through IPTables
+ - name: Check existing IPTables rules
+   shell: iptables -L
+   register: existingrules
 
+ - name: Allow HTTP to connect through IPTables
+   command: iptables -A OUTPUT -m owner --cmd-owner httpd -j ACCEPT -m comment --comment "HTTP"
+   when: existingrules.stdout.find("HTTP") == -1
 
-  - name: Allow SSH to connect through IPTables
-
-    
-  - name: Restart IPTables
-    notify:
-      name: restart iptables
+ - name: Allow SSH to connect through IPTables
+   command: iptables -A OUTPUT -m owner --cmd-owner SSH -j ACCEPT -m comment --comment "SSH"
+   when: existingrules.stdout.find("SSH") == -1
+   notify:
+     name: save iptables
+     name: restart iptables

@@ -1,11 +1,4 @@
 ---
-tasks:
-  - name: Update the list of stuff
-    apt: update_cache=yes
-
-  - name: Ensure nginx nor any vhosts are installed
-    apt: pkg=nginx state=absent
-
-  - name: Install nginx
-    apt: name=nginx state=present
-    notify: restart nginx
+- name: Install nginx
+  apt: name=nginx state=present
+  notify: restart nginx
