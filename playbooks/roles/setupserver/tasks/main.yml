@@ -3,10 +3,10 @@
   file: path=/var/www/TestHost.com state=directory
 
 - name: Create the HTML file in the /var/www directory
-  template: src=/users/purplelemons/desktop/ansible/extra_files/TestHostIndex.j2 dest=/var/www/TestHost.com/index.html
+  template: src=/users/purplelemons/desktop/ansible/extra_files/defaultindex.html dest=/var/www/TestHost.com/index.html
 
 - name: Copy default nginx file to TestHost.com
-  template: src=~/desktop/ansible/extra_files/TestHostServerConfig.j2 dest=/etc/nginx/sites-available/TestHost.com
+  template: src=~/desktop/ansible/extra_files/defaultserverconfig dest=/etc/nginx/sites-available/TestHost.com
   notify:
      - restart nginx
 
