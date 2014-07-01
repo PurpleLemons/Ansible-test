@@ -10,6 +10,5 @@
  - name: Allow SSH to connect through IPTables
    command: iptables -A INPUT -p tcp --sport 22 -j ACCEPT -m comment --comment "SSH"
    notify:
-     name: save iptables
      name: restart iptables
    when: existingrules.stdout.find("SSH") == -1
