@@ -2,17 +2,7 @@
 - hosts: Testing
   remote_user: ansibletest
   sudo: yes
-
-  pre_tasks:
-  - name: Confirm the play is running
-    shell: echo 'playbooktest is running'
-
   roles:
   - installnginx
   - setupserver
   - createfirewall
-#  - servefile
-
-  post_tasks:
-  - name: Notify the playbook is done
-    shell: echo 'The playbooktest is finished'

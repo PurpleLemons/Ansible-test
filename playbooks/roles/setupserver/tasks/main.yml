@@ -3,12 +3,17 @@
   file: path=/var/www/TestHost.com state=directory
 
 - name: Create the HTML file in the /var/www directory
-  template: src=/users/purplelemons/desktop/ansible/extra_files/TestHostChild.j2 dest=/var/www/TestHost.com/index.html
+  template: src=/users/purplelemons/desktop/ansible/extra_files/TestHostIndex.j2 dest=/var/www/TestHost.com/index.html
 
 - name: Copy default nginx file to TestHost.com
   template: src=~/desktop/ansible/extra_files/TestHostServerConfig.j2 dest=/etc/nginx/sites-available/TestHost.com
+  notify:
+     - restart nginx
 
 - name: Create a link between the sites-available file and the sites-enabled file
   file: force=yes state=link src=/etc/nginx/sites-available/TestHost.com path=/etc/nginx/sites-enabled/TestHost.com
   notify:
-     - restart nginx
+     - restart nginx again
+# Need to create a second restart handler in case the link exists,
+# but the sites-available file does not (or vice versa). This way, nginx will
+# restart and the changes will take effect.
