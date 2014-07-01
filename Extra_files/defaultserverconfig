@@ -1,8 +1,9 @@
-server {
-       listen 80;
+server
+{
+	listen 80;
 
-       root {% block indexlocation %}{% endblock %};
-       index index.html index.htm;
+	root {{ index_location }};
+	index index.html index.htm;
        
-       server_name {% block servername %}{% endblock %};
+	server_name {{ server_name }};
 }
