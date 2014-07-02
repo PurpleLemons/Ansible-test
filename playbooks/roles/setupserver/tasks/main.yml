@@ -1,17 +1,17 @@
 ---
-- name: Create the /var/www/TestHost.com directory
-  file: path=/var/www/TestHost.com state=directory
+- name: Create the server's index directory
+  file: path={{ index_location }} state=directory
 
-- name: Create the HTML file in the /var/www directory
-  template: src=/users/purplelemons/desktop/ansible/extra_files/defaultindex.html dest=/var/www/TestHost.com/index.html
+- name: Create the HTML file in the server's index directory
+  template: src=/users/purplelemons/desktop/ansible/extra_files/defaultindex.html dest={{ index_location }}/index.html
 
-- name: Copy default nginx file to TestHost.com
-  template: src=~/desktop/ansible/extra_files/defaultserverconfig dest=/etc/nginx/sites-available/TestHost.com
+- name: Copy default nginx file to the servername
+  template: src=~/desktop/ansible/extra_files/defaultserverconfig dest=/etc/nginx/sites-available/{{ title }}
   notify:
      - restart nginx
 
 - name: Create a link between the sites-available file and the sites-enabled file
-  file: force=yes state=link src=/etc/nginx/sites-available/TestHost.com path=/etc/nginx/sites-enabled/TestHost.com
+  file: force=yes state=link src=/etc/nginx/sites-available/{{ title }} path=/etc/nginx/sites-enabled/{{ title }}
   notify:
      - restart nginx again
 # Needed to create a second restart handler in case the link exists, but

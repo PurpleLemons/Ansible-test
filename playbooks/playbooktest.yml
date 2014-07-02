@@ -1,5 +1,9 @@
 ---
 - hosts: Testing
+  vars:
+    - title: "OtherTestHost.com"
+    - index_location: "/var/www/OtherTestHost.com/"
+    - server_name: "OtherTestHost.com"
   remote_user: ansibletest
   sudo: yes
   roles:
