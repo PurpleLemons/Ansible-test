@@ -1,0 +1,10 @@
+---
+- hosts: Testing
+  vars:
+    - title: "TestHost.com"
+    - index_location: "var/www/TestHost.com/"
+  remote_user: ansibletest
+  sudo: yes
+  roles:
+  - removeserverconfig
+  - removeindexdirectory

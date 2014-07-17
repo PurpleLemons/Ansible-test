@@ -1,0 +1,9 @@
+---
+- name: Remove the link between the sites-enabled file and the sites-available file (possibly?)
+  file: src=/etc/nginx/sites-enabled/{{ title }} path=/etc/nginx/sites-enabled/{{ title }} state=link
+
+#- name: Delete the sites-available file
+#  file: path=/etc/nginx/sites-available/{{ title }} state=absent
+
+#- name: Delete the sites-enabled file
+#  file: path=/etc/nginx/sites-enabled/{{ title }}  state=absent
